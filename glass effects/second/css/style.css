@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "nunito";
+    color: white;
+}
+body{
+    min-height: 100vh;
+    background-image: url(../img/main_bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #011a1e7a;
+    background-blend-mode: color;
+    display: grid;
+    place-items: center;
+}
+.wrapper{
+    width: 800px;
+    height: 400px;
+    border-radius: 20px;
+    border: 1px solid rgba(2, 33, 59, 0.351);
+    background: linear-gradient(45deg ,rgba(29, 49, 70, 0.4) , rgba(2, 18, 35, 0.4));
+    backdrop-filter: blur(50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.box{
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(4, 26, 40, 0.351);
+    background: linear-gradient(45deg ,rgba(7, 42, 53, 0.4) , rgba(116, 116, 116, 0.4));    
+    backdrop-filter: blur(50px);
+    border-radius: 10px;
+    padding: 10px;
+}
+.container{
+    width: 100%;
+    height: 50%;
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.small_items{
+    width: 25%;
+    height: 100%;
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contact{
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+.contact_device{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.contact_device > div{
+    width: 50%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.434);
+    background-color: #9c9c9c5e;
+    display: grid;
+    place-items: center;
+    font-size: 2em;
+}
+.focus{
+    width: 100%;
+    height: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.434);
+    background-color: #9c9c9c5e;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+.focus_icon_wrapper{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #3d3d3d5e;
+    display: grid;
+    place-items: center;
+    font-size: 1.2em;
+}
