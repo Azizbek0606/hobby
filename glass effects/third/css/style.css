@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "roboto mono";
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.neon-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.neon-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  animation: glow 1.5s infinite alternate;
+  z-index: 999;
+}
+
+.neon-box.pink {
+  background: rgba(255, 0, 222, 0.6);
+  box-shadow: 0 0 10px rgba(255, 0, 222, 0.75);
+}
+
+.neon-box.blue {
+  background: rgba(0, 0, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 255, 0.75);
+}
+
+.neon-box.green {
+  background: rgba(0, 255, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.75);
+}
+
+.neon-box::before, .neon-box::after {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(80, 80, 255, 0.3));
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(40px);
+}
+
+.neon-box::after {
+  top: -100px;
+  left: -100px;
+  right: -100px;
+  bottom: -100px;
+  filter: blur(80px);
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.75);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 255, 255, 1);
+  }
+}
+
+.dot {
+  position: absolute;
+  width: 10px;
