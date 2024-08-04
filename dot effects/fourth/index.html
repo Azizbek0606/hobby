@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js 3D Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const sphereGeometry = new THREE.SphereGeometry(1, 32, 32);
+
+        const pointsMaterial = new THREE.PointsMaterial({ color: 0xfff000, size: 0.02 });
+        const spherePoints = new THREE.Points(sphereGeometry, pointsMaterial);
+        scene.add(spherePoints);
+
+        const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xfff00090700805 });
+        const wireframe = new THREE.LineSegments(new THREE.WireframeGeometry(sphereGeometry), wireframeMaterial);
+        scene.add(wireframe);
+
+        function createStars() {
+            const starGeometry = new THREE.BufferGeometry();
+            const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
+            const starVertices = [];
+
+            for (let i = 0; i < 10000; i++) {
+                const x = (Math.random() - 0.5) * 2000;
+                const y = (Math.random() - 0.5) * 2000;
+                const z = (Math.random() - 0.5) * 2000;
+                starVertices.push(x, y, z);
+            }
+
+            starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+
+            const stars = new THREE.Points(starGeometry, starMaterial);
+            scene.add(stars);
+
+            return stars;
+        }
+
+        const stars = createStars();
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            spherePoints.rotation.x += 0.01;
+            spherePoints.rotation.y += 0.01;
+            wireframe.rotation.x += 0.01;
+            wireframe.rotation.y += 0.01;
+
+            const positions = stars.geometry.attributes.position.array;
+            for (let i = 0; i < positions.length; i += 3) {
+                positions[i + 2] += 0.5;
+
+                if (positions[i + 2] > 5) {
+                    positions[i] = (Math.random() - 0.5) * 2000;
+                    positions[i + 1] = (Math.random() - 0.5) * 2000;
+                    positions[i + 2] = -1000;
+                }
+            }
+            stars.geometry.attributes.position.needsUpdate = true;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+
+</html>
