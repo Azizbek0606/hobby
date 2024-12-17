@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominant Color Detection</title>
+</head>
+<body>
+    <h1>Dominant Color Detector</h1>
+    <input type="file" id="upload" accept="image/*" />
+    <canvas id="canvas" style="display: none;"></canvas>
+    <div id="result" style="width: 100px; height: 100px; border: 1px solid #000;"></div>
+
+    <script>
+        const upload = document.getElementById('upload');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const result = document.getElementById('result');
+
+        upload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+            img.onload = () => {
+                canvas.width = 100; // Canvasni kichraytiramiz
+                canvas.height = 100;
+                ctx.drawImage(img, 0, 0, 100, 100); // Rasmni canvasga chizamiz
+
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const pixels = imageData.data;
+
+                // Ranglarni to'plash
+                const colorCounts = {};
+                for (let i = 0; i < pixels.length; i += 4) {
+                    const r = pixels[i];
+                    const g = pixels[i + 1];
+                    const b = pixels[i + 2];
+                    const color = `${r},${g},${b}`;
+
+                    colorCounts[color] = (colorCounts[color] || 0) + 1;
+                }
+
+                // Dominant rangni aniqlash
+                let dominantColor = '';
+                let maxCount = 0;
+                for (const color in colorCounts) {
+                    if (colorCounts[color] > maxCount) {
+                        dominantColor = color;
+                        maxCount = colorCounts[color];
+                    }
+                }
+
+                // Natijani chiqarish
+                result.style.backgroundColor = `rgb(${dominantColor})`;
+                console.log(`Dominant rang: rgb(${dominantColor})`);
+            };
+        });
+    </script>
+</body>
+</html>
