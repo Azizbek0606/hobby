@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Effect</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg , rgb(4, 2, 74), rgb(57, 2, 69));
+            height: 100vh;
+        }
+
+        .container {
+            width: 1200px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .card {
+            width: 320px;
+            height: 400px;
+            background-color: rgba(3, 27, 52, 0.4);
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            top: var(--y);
+            left:var(--x);
+            background: radial-gradient(#600d79, transparent, transparent);
+            border-radius: 50px;
+            transform: translate(-50%, -50%);
+            transition: 0.5s, top 0s, left 0s;
+            opacity: 0;
+        }
+        .card:hover::before{
+            opacity: 1;
+        }
+        .card::after{
+            content: "";
+            position: absolute;
+            inset: 2px;
+            background-color: rgba(39, 2, 37, 0.7);
+            border-radius: 50px;
+        }
+    </style>
+    <div class="container">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </div>
+    <script>
+        const cards = document.querySelectorAll(".card");
+        cards.forEach(element => {
+            element.addEventListener("mousemove", function (e) {
+                // Elementning pozitsiyasini hisoblash
+                const rect = element.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+
+                element.style.setProperty("--x", x + "px");
+                element.style.setProperty("--y", y + "px");
+            });
+        });
+    </script>
+</body>
+
+</html>
