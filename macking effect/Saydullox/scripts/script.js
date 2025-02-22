@@ -76,37 +76,6 @@ window.addEventListener('resize', () => {
 init();
 animate();
 
-let isScrolling = false;
-
-window.addEventListener('wheel', function (event) {
-    if (isScrolling) return;
-
-    let sections = document.querySelectorAll(".section"); // Barcha sectionlarni olish
-    let screenHeight = window.innerHeight;
-    let scrollDirection = event.deltaY > 0 ? 1 : -1; // Pastga (1) yoki yuqoriga (-1) harakatlanish
-
-    let currentSectionIndex = -1;
-
-    // Hozir qaysi section ekranga eng yaqin ekanligini aniqlash
-    sections.forEach((section, index) => {
-        const sectionPosition = section.getBoundingClientRect().top;
-        if (sectionPosition >= -screenHeight * 0.5 && sectionPosition < screenHeight * 0.5) {
-            currentSectionIndex = index;
-        }
-    });
-
-    let targetIndex = currentSectionIndex + scrollDirection;
-
-    // Section chegaradan chiqib ketmasligi uchun tekshirish
-    if (targetIndex >= 0 && targetIndex < sections.length) {
-        isScrolling = true;
-        sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
-
-        setTimeout(() => {
-            isScrolling = false;
-        }, 1000); // Animatsiya tugashini kutish
-    }
-});
 const cards = document.querySelectorAll(".card");
 cards.forEach(element => {
     element.addEventListener("mousemove", function (e) {
