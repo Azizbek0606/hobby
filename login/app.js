@@ -5,8 +5,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const particles = [];
-const maxParticles = 100;
-const connectionDistance = 100;
+const maxParticles = 700;
+const connectionDistance = 50;
 
 class Particle {
     constructor(x, y) {
