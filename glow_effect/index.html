@@ -74,7 +74,6 @@
         const cards = document.querySelectorAll(".card");
         cards.forEach(element => {
             element.addEventListener("mousemove", function (e) {
-                // Elementning pozitsiyasini hisoblash
                 const rect = element.getBoundingClientRect();
                 let x = e.clientX - rect.left;
                 let y = e.clientY - rect.top;
