@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "roboto mono";
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(45deg, seagreen, rgb(0, 139, 125));
+}
+.wrapper{
+    width: 325px;
+    height: 100px;
+}
+.box {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(75px);
+  clip-path: path("M0 50C0 22.386 22.386 0 50 0h495c19.33 0 35 15.67 35 35s15.67 35 35 35 35 15.67 35 35v45c0 27.614-22.386 50-50 50H50c-27.614 0-50-22.386-50-50V50z");
+  -webkit-clip-path: path("M0 50C0 22.386 22.386 0 50 0h495c19.33 0 35 15.67 35 35s15.67 35 35 35 35 15.67 35 35v45c0 27.614-22.386 50-50 50H50c-27.614 0-50-22.386-50-50V50z");
+  /* filter: drop-shadow(10px 10px 10px rgba(0,0,0,1)); */
+}
