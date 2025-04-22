@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Bubble Drop Down</title>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="drop-down">
+        </div>
+        <svg display="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <filter id="gooey">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="12" />
+                <feColorMatrix values="1 0 0 0 0
+                                                   0 1 0 0 0
+                                                   0 0 1 0 0
+                                                   0 0 0 50 -10" />
+            </filter>
+        </svg>
+        <div class="middle-effect"></div>
+        <div class="drop-down-menu"></div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>

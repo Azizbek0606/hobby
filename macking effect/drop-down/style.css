@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "roboto mono";
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(45deg, #03232c, #576679);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-wrapper{
+    width: 450px;
+    height: 450px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    filter: url(#gooey);
+}
+.middle-effect{
+    width: 95%;
+    height: 30px;
+    background-color: white;
+}
+.drop-down{
+    width: 100%;
+    height: 75px;
+    background-color: white;
+    border-radius: 20px;
+}
+.drop-down-menu{
+    width: 100%;
+    height: 275px;
+    background-color: white;
+    border-radius: 20px;
+}
