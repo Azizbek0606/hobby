@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "roboto mono";
+}
+body{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: rgb(0, 11, 26);
+    overflow: hidden;
+}
+.effect{
+    position: absolute;
+    width:  250px;
+    height: 250px;
+    background: var(--i);
+    border-radius: 50%;
+    filter: blur(100px);
+    animation: animate 10s linear infinite;
+}
+.effect:nth-child(1){
+    top: 0%;
+    left: 0%;
+    --i: rgba(110, 233, 242, 0.5);
+}
+.effect:nth-child(2){
+    right: 50%;
+    bottom: 10%;
+    --i: rgba(118, 105, 240, 0.5);
+}
+.effect:nth-child(3){
+    top: 0%;
+    right: 0%;
+    --i: rgba(145, 35, 205, 0.5);
+}
+@keyframes animate{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(2.5);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 2rem;
+    text-align: center;
+}
