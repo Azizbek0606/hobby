@@ -7,7 +7,7 @@ canvas.height = window.innerHeight;
 const mouse = {
     x: null,
     y: null,
-    radius: 100
+    radius: 75
 }
 
 window.addEventListener('mousemove', function (event) {
@@ -23,7 +23,7 @@ class Point {
         this.radius = this.baseRadius;
         this.dx = (Math.random() - 0.5) * 2;
         this.dy = (Math.random() - 0.5) * 2;
-        this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        this.color = "#ffffda";
     }
 
     draw() {
@@ -43,7 +43,6 @@ class Point {
         this.x += this.dx;
         this.y += this.dy;
 
-        // Mouse interaction
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
@@ -58,7 +57,7 @@ class Point {
 }
 
 const pointsArray = [];
-const numberOfPoints = 200;
+const numberOfPoints = 300;
 
 for (let i = 0; i < numberOfPoints; i++) {
     let x = Math.random() * canvas.width;
@@ -78,7 +77,7 @@ function animate() {
             let dy = pointsArray[i].y - pointsArray[j].y;
             let distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < 100) {
+            if (distance < 75) {
                 ctx.beginPath();
                 ctx.moveTo(pointsArray[i].x, pointsArray[i].y);
                 ctx.lineTo(pointsArray[j].x, pointsArray[j].y);
@@ -89,6 +88,6 @@ function animate() {
             }
         }
     }
-}
+}   
 
 animate();

@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const starVertices = [];
     for (let i = 0; i < 15000; i++) {
-        const x = (Math.random() - 0.5) * 2000;
-        const y = (Math.random() - 0.5) * 2000;
-        const z = (Math.random() - 0.5) * 2000;
+        const x = (Math.random() - 0.5) * 50;
+        const y = (Math.random() - 0.5) * 50;
+        const z = (Math.random() - 0.5) * 50;
         starVertices.push(x, y, z);
     }
 
